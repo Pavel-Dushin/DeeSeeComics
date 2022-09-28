@@ -1,15 +1,12 @@
 package deesee.comics.service;
 
 import deesee.comics.dto.Superhero;
-import deesee.comics.service.encryption.EncryptionService;
 import deesee.comics.repository.Repository;
+import deesee.comics.service.encryption.EncryptionService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
-import javax.validation.Validator;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -49,9 +46,9 @@ public class SuperheroService {
                 .collect(Collectors.toList());
     }
 
-    private Superhero getEncryptedSuperhero(Superhero superhero, Integer shiftCharTo){
+    private Superhero getEncryptedSuperhero(Superhero superhero, Integer shiftCharTo) {
         Superhero.Identity encryptedIdentity = null;
-        if(superhero.getIdentity() != null){
+        if (superhero.getIdentity() != null) {
             encryptedIdentity = new Superhero.Identity();
             String encryptedFirstName = encryptionService.encrypt(superhero.getIdentity().getFirstName(), shiftCharTo);
             String encryptedLastName = encryptionService.encrypt(superhero.getIdentity().getLastName(), shiftCharTo);

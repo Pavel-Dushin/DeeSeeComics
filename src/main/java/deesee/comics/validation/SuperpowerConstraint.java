@@ -10,10 +10,12 @@ import java.lang.annotation.Target;
 
 @Documented
 @Constraint(validatedBy = SuperpowerValidation.class)
-@Target( { ElementType.METHOD, ElementType.FIELD })
+@Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface SuperpowerConstraint {
-        String message() default "cannot be empty or unregistered";
-        Class<?>[] groups() default {};
-        Class<? extends Payload>[] payload() default {};
+    String message() default "cannot be empty or unregistered";
+
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
 }

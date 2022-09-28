@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class Repository {
-    private Map<String, Superhero> superheroes;
+    private final Map<String, Superhero> superheroes;
 
     public Repository() throws JsonProcessingException {
         superheroes = new ConcurrentHashMap<>();
