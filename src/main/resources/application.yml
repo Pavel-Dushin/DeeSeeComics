@@ -3,11 +3,11 @@ server:
     context-path: /api
   port: 8080
 
+logging:
+  level:
+    root: debug
 
 deeseecomics:
   allowed-superpowers: strength,speed,flight,invulnerability,healing
   encryption:
     default-shift: 3
-logging:
-  level:
-    root: debug
