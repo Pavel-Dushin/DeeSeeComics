@@ -13,7 +13,7 @@ public class SuperpowerValidation implements ConstraintValidator<SuperpowerConst
 
     @Override
     public boolean isValid(Set<String> superpowers, ConstraintValidatorContext cxt) {
-        return !CollectionUtils.isEmpty(superpowers) && superpowers.stream()
-                .allMatch(superpower -> allowedSuperpowers.contains(superpower));
+        return CollectionUtils.isEmpty(superpowers) || superpowers.stream()
+                .anyMatch(superpower -> !allowedSuperpowers.contains(superpower));
     }
 }

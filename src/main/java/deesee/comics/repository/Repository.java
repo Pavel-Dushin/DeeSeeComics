@@ -7,10 +7,12 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import deesee.comics.dto.Superhero;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
@@ -37,9 +39,12 @@ public class Repository {
     }
 
     @NonNull
-    public Collection<Superhero> findBySuperpower(String superpower) {
+    public Collection<Superhero> findBySuperpower(Set<String> superpowers) {
         return superheroes.values().stream()
-                .filter(superhero -> superhero.getSuperpowers().contains(superpower))
+                .filter(superhero ->
+                        CollectionUtils.isEmpty(superpowers) && CollectionUtils.isEmpty(superhero.getSuperpowers())
+                                || !CollectionUtils.isEmpty(superpowers) && superhero.getSuperpowers().containsAll(superpowers)
+                )
                 .collect(Collectors.toList());
     }
 

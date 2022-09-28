@@ -1,11 +1,9 @@
 server:
-  servlet:
-    context-path: /api
   port: 8080
 
-logging:
-  level:
-    root: debug
+spring:
+  jackson:
+    default-property-inclusion: non_null
 
 deeseecomics:
   allowed-superpowers: strength,speed,flight,invulnerability,healing
