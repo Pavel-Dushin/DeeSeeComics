@@ -48,6 +48,10 @@ public class Repository {
                 .collect(Collectors.toList());
     }
 
+    public void delete(@NonNull String superheroName) {
+        superheroes.remove(superheroName);
+    }
+
     private static final class Constants {
         private static final String INIT_DATA = "[\n" +
                 "    {\n" +

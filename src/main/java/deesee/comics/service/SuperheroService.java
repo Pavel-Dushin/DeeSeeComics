@@ -63,4 +63,8 @@ public class SuperheroService {
         updatedSuperHero.setSuperpowers(new HashSet<>(superhero.getSuperpowers()));
         return updatedSuperHero;
     }
+
+    public void delete(String superheroName) {
+        repository.delete(superheroName);
+    }
 }

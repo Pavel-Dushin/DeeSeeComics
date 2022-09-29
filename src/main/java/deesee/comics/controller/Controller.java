@@ -13,7 +13,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,6 +47,22 @@ public class Controller {
     })
     public ResponseEntity<Void> save(@Valid @RequestBody Superhero superhero) {
         superheroService.save(superhero);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @DeleteMapping("/{superheroName}")
+    @ResponseBody
+    @Operation(summary = "Delete superhero by name")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "400",
+                    description = "Request error",
+                    content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
+                            schema = @Schema(implementation = ErrorDto.class))}
+            ),
+            @ApiResponse(responseCode = "204", description = "Deleted successfully")
+    })
+    public ResponseEntity<Void> delete(@PathVariable String superheroName) {
+        superheroService.delete(superheroName);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 

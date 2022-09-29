@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
 @Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface SuperpowerConstraint {
-    String message() default "cannot be empty or unregistered";
+    String message() default "superpower is unknown";
 
     Class<?>[] groups() default {};
 

@@ -4,7 +4,7 @@ A superhero distribution platform to keep track of employed superheroes
 ###build application
 `mvn clean package`
 
-###Run application
+###Run application (from target catalog)
 `java -jar DeeSeeComics.jar`
 
 ###Docker
@@ -31,20 +31,24 @@ http://localhost:8080/api/swagger-ui/index.html
 
 `curl --location --request GET 'http://localhost:8080/api/superhero/encrypted/by?superpowers=healing&superpowers=speed&shiftCharTo=1'`
 
-5. Save superhero
+5. Save superhero (create/update by name)
 
-`curl --location --request POST 'http://localhost:8080/api/superhero' \
---header 'Content-Type: application/json' \
+`curl --location --request POST 'http://localhost:8080/api/superhero' 
+--header 'Content-Type: application/json' 
 --data-raw '{
-"name": "superman",
+"name": "superwoman",
 "identity": {
-"firstName": "clark",
-"lastName": "kent"
+"firstName": "lois",
+"lastName": "lane"
 },
-"birthday": "1977-04-18",
+"birthday": "1977-01-12",
 "superpowers": [
 "flight",
 "strength",
 "invulnerability"
 ]
 }'`
+
+6. Delete superhero by name
+
+`curl --location --request DELETE 'http://localhost:8080/api/superhero/superman'`

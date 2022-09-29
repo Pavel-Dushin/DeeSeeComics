@@ -10,4 +10,4 @@ spring:
 deeseecomics:
   allowed-superpowers: strength,speed,flight,invulnerability,healing
   encryption:
-    default-shift: 3
+    default-shift-only-positive: 3
